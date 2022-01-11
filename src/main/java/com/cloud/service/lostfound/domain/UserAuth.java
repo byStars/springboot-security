@@ -6,15 +6,13 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.experimental.Accessors;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @Author romance
@@ -46,7 +44,6 @@ public class UserAuth {
     private String address;
 
     @ApiModelProperty(value = "是否启用")
-    @Getter(AccessLevel.NONE)
     private Boolean enabled;
 
     @ApiModelProperty(value = "用户名")
@@ -65,5 +62,18 @@ public class UserAuth {
     @TableField(exist = false)
     private List<Role> roles;
 
+    public UserDto fromUserAuth(UserAuth userAuth){
+        return UserAuthMapper.MAPPER.from(userAuth);
+    }
 
+    @Mapper
+    interface UserAuthMapper {
+        UserAuthMapper MAPPER = Mappers.getMapper(UserAuthMapper.class);
+
+        /**
+         * @param userAuth
+         * @return
+         */
+        UserDto from(UserAuth userAuth);
+    }
 }

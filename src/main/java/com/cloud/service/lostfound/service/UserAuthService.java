@@ -44,8 +44,7 @@ public class UserAuthService {
 
     public UserDto getAdminByUserName(String username) {
         UserAuth userAuth = userAuthMapper.selectOne(new QueryWrapper<UserAuth>().eq("username", username));
-        UserDto userDto = new UserDto();
-        userDto.setName(userAuth.getName());
+        UserDto userDto = new UserAuth().fromUserAuth(userAuth);
         return userDto;
 
     }
