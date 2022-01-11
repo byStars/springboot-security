@@ -13,5 +13,6 @@ import java.util.List;
  */
 @Repository
 public interface RoleMapper extends BaseMapper<Role> {
+
     List<Role> getRoles(Integer id);
 }

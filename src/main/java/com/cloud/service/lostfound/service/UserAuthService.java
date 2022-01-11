@@ -1,6 +1,7 @@
 package com.cloud.service.lostfound.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.cloud.service.lostfound.domain.Role;
 import com.cloud.service.lostfound.domain.UserAuth;
 import com.cloud.service.lostfound.domain.UserDto;
@@ -53,8 +54,11 @@ public class UserAuthService {
         return roleMapper.getRoles(id);
     }
 
-    public Result login(String username, String password, HttpServletRequest request) {
-
+    public Result login( String username, String password,String code, HttpServletRequest request) {
+        String captcha = (String) request.getSession().getAttribute("captcha");
+        if (StringUtils.isBlank(code) || !captcha.equalsIgnoreCase(code)) {
+            return Result.fail("验证码填写错误！");
+        }
         //登录
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         if (null==userDetails||!passwordEncoder.matches(password,userDetails.getPassword())){
