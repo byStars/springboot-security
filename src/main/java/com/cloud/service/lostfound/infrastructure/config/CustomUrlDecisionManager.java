@@ -1,4 +1,4 @@
-package com.cloud.service.lostfound.config;
+package com.cloud.service.lostfound.infrastructure.config;
 
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;

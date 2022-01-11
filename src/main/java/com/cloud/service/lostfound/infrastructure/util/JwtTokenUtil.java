@@ -1,9 +1,11 @@
 package com.cloud.service.lostfound.infrastructure.util;
 
+import com.cloud.service.lostfound.domain.UserDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -150,6 +152,5 @@ public class JwtTokenUtil {
 	private Date generateExpirationDate() {
 		return new Date(System.currentTimeMillis() + expiration * 1000);
 	}
-
 
 }

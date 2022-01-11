@@ -1,8 +1,7 @@
-package com.cloud.service.lostfound.config;
+package com.cloud.service.lostfound.infrastructure.config;
 
-import com.cloud.service.lostfound.domain.UserAuth;
 import com.cloud.service.lostfound.domain.UserDto;
-import com.cloud.service.lostfound.filter.JwtAuthenticationTokenFilter;
+import com.cloud.service.lostfound.infrastructure.filter.JwtAuthenticationTokenFilter;
 import com.cloud.service.lostfound.service.UserAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

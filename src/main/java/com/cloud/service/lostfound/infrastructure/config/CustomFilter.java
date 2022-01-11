@@ -1,4 +1,4 @@
-package com.cloud.service.lostfound.config;
+package com.cloud.service.lostfound.infrastructure.config;
 
 import com.cloud.service.lostfound.domain.Menu;
 import com.cloud.service.lostfound.domain.Role;
